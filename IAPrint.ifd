@@ -1,0 +1,105 @@
+{
+  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "id": "IAPrint",
+  "name": "IAPrint",
+  "version": "1.0",
+  "protocol": "dll",
+  "baseUrl": null,
+  "basePath": "",
+  "auth": {},
+  "dependencies": [
+    "IAPrint.dll",
+    "Common.Logging.Core.dll",
+    "Common.Logging.dll"
+  ],
+  "schemas": {
+    "IAPrint.PrintIA": {
+      "id": "IAPrint.PrintIA",
+      "type": "object",
+      "properties": {
+        "PrintQueueName": {
+          "title": "PrintQueueName",
+          "type": "string",
+          "description": "PrintQueueName"
+        },
+        "GhostScriptPath": {
+          "title": "GhostScriptPath",
+          "type": "string",
+          "description": "GhostScriptPath",
+          "default": "C:\\Program Files\\gs\\gs9.20\\bin\\gswin64c"
+        },
+        "WkHtmlToPdfPath": {
+          "title": "WkHtmlToPdfPath",
+          "type": "string",
+          "description": "WkHtmlToPdfPath",
+          "default": "C:\\Program Files (x86)\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
+        },
+        "Width": {
+          "title": "Width",
+          "type": "number",
+          "description": "Width of the page"
+        },
+        "Height": {
+          "title": "Height",
+          "type": "number",
+          "description": "Height of the page"
+        },
+        "Margin": {
+          "title": "Margin",
+          "type": "number",
+          "description": "Horizontal margins of the page"
+        },
+        "MarginVert": {
+          "title": "MarginVert",
+          "type": "number",
+          "description": "Vertical margins of the page"
+        }
+      }
+    }
+  },
+  "resources": {
+    "IAPrint.PrintIA": {
+      "title": "PrintIA",
+      "isInterfaceAsset": true,
+      "methods": {
+        "PrintFile": {
+          "title": "PrintFile",
+          "description": "PrintFile",
+          "response": {
+            "type": "null"
+          },
+          "parameters": {
+            "fileName": {
+              "type": "string",
+              "required": true
+            }
+          }
+        }
+      },
+      "events": {
+        "PrintError": {
+          "id": "PrintError",
+          "properties": {
+            "Error": {
+              "title": "Error",
+              "type": "string"
+            }
+          }
+        },
+        "PrintWarning": {
+          "id": "PrintWarning",
+          "properties": {
+            "Error": {
+              "title": "Error",
+              "type":  "string"
+            }
+          }
+        },
+        "PrintCompleted": {
+          "id": "PrintCompleted"
+        }
+      }
+    }
+  }
+}
